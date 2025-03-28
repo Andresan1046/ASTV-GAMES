@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MathJack – Blackjack Matemático</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <!-- Pantalla de Bienvenida -->
+  <div id="welcome">
+    <h1 class="titulo-animado">MathJack</h1>
+    <button class="btn-uiverse" id="play-btn">Jugar</button>
+  </div>
+
+  <!-- Scoreboard -->
+  <div id="scoreboard">
+    <span id="player-score">Jugador: 0</span> –
+    <span id="dealer-score">Crupier: 0</span>
+  </div>
+
+  <!-- Menú de Dificultades y Apuestas -->
+  <div id="menu-dificultades" style="display:none;">
+    <h2 class="menu-title">Seleccione Dificultad</h2>
+    <div class="dificultades">
+      <button class="btn-uiverse" onclick="iniciarJuego('facil')">🌟 4°-5° Grado</button>
+      <button class="btn-uiverse" onclick="iniciarJuego('intermedio')">🚀 6°-7° Grado</button>
+      <button class="btn-uiverse" onclick="iniciarJuego('dificil')">🔥 8° Grado (incluye logro)</button>
+    </div>
+    <!-- Sistema de Apuestas en cuadro blanco -->
+    <div id="apuestas">
+      <p>Saldo: $<span id="balance-human">1000</span> (Jugador) | $<span id="balance-bot">1000</span> (Bot)</p>
+      <div class="bet-controls">
+        <button class="btn-uiverse" id="bet-minus">-</button>
+        <span>Apuesta: $<span id="bet-amount">100</span></span>
+        <button class="btn-uiverse" id="bet-plus">+</button>
+      </div>
+    </div>
+    <button class="btn-uiverse" id="reset-score-btn">🔄 Restaurar Marcador</button>
+    <div class="datos-interesantes" id="datos-interesantes"></div>
+  </div>
+
+  <!-- Área del Juego -->
+  <div id="juego" style="display:none;">
+    <!-- Sección del Jugador Real -->
+    <div id="player-section">
+      <h2>Tu mano (Jugador):</h2>
+      <div id="player-cards" class="card-container"></div>
+      <h3>Total: <span id="player-total">0</span></h3>
+      <div class="buttons">
+        <button class="btn-uiverse" id="hit-btn">🃏 Pedir Carta</button>
+        <button class="btn-uiverse" id="stand-btn">✋ Quedarse</button>
+      </div>
+    </div>
+    <!-- Sección del Bot -->
+    <div id="bot-section">
+      <h2>Mano del Bot:</h2>
+      <div id="bot-cards" class="card-container"></div>
+      <h3>Total: <span id="bot-total">0</span></h3>
+    </div>
+    <!-- Sección del Crupier -->
+    <div id="dealer-section">
+      <h2>Crupier:</h2>
+      <div id="dealer-cards" class="card-container"></div>
+      <h3>Total del Crupier: <span id="dealer-total">0</span></h3>
+    </div>
+    <!-- Aquí se mostrará el resultado -->
+    <h2 id="result"></h2>
+    <!-- Botón de reinicio, aparece 1 seg después de finalizar la partida -->
+    <button class="btn-uiverse" id="restart-btn">🔄 Reiniciar Juego</button>
+  </div>
+
+  <!-- Modal de Chipotle -->
+  <div id="chipotle-modal" class="modal" style="display:none;">
+    <div class="modal-content">
+      <h1>CHIPOTLÉ!</h1>
+      <div class="confetti">🎉🎊✨</div>
+      <p class="modal-explanation">¡Ganaste automáticamente! Tus dos primeras cartas son As.</p>
+      <button class="btn-uiverse" onclick="cerrarChipotle()">Cerrar</button>
+    </div>
+  </div>
+
+  <!-- Área para las mini-cards decorativas (fondo) -->
+  <div id="bounce-area"></div>
+
+  <!-- Cargamos la librería de confetti (opcional) -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <script src="script.js"></script>
+</body>
+
+</html>
